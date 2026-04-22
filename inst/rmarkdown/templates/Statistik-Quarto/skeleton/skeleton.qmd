@@ -1,0 +1,212 @@
+---
+title: ""
+lang: de
+biblio-title: none
+format:
+  typst:
+    keep-typ: true
+    toc: false
+    toc-depth: 3
+    papersize: a4
+    fontsize: 11pt
+    mainfont: arial
+    margin:
+      x: 1in
+      y: 1in
+    section-numbering: 1.1.1
+    columns: 1
+bibliography: literatur.bib
+csl: apa.csl
+cite-method: citeproc
+---
+
+```{=typst}
+// Gestaltung des Dokuments
+
+#show outline: set heading(outlined: true)
+
+
+
+#set page(numbering: none)
+
+#align(center)[
+  #v(2cm)
+  #text(2em, weight: "bold")[Mustertitel für das Thema der Arbeit]
+  
+  #v(1cm)
+  #text(1.5em)[Untertitel der Arbeit]
+  
+  #image("dhge_logo.png", width: 40%)
+  
+  #v(2cm)
+  Vorgelegt von: \
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    [Max Mustermann (12345)], [Erika Musterfrau (67890)],
+    [Hans Schmidt (99887)], []
+  )
+
+  #v(4cm)
+  *Kurs:* Einführung in die Informatik \
+  *Dozent:* Prof. Dr. Mustergelehrter \
+  *Abgabedatum:* 11. Dezember 2025
+]
+
+#pagebreak()
+#set par(leading: 1.25em)
+
+#set page(numbering: "I")
+#counter(page).update(1)
+// 2. Das Inhaltsverzeichnis (nach dem Titelblatt)
+#outline(indent: auto) 
+
+#pagebreak()
+
+
+#outline(
+  title: [Abbildungsverzeichnis],
+  target: figure.where(kind: "quarto-float-fig"),
+)
+
+
+
+#pagebreak()
+
+// Tabellenverzeichnis
+#outline(
+  title: [Tabellenverzeichnis],
+  target: figure.where(kind: "quarto-float-tbl"),
+)
+
+#context {
+  let stand = counter(page).get().first()
+  [#metadata(stand) <rom_stand>]
+}
+
+
+#pagebreak()
+
+#show heading: set block(
+  above: 36pt, 
+  below: 18pt
+)
+
+#show figure: set block(
+  above: 2em, // Abstand zum Text oberhalb
+  below: 2em  // Abstand zum Text unterhalb
+)
+
+
+// 3. HAUPTTEIL (Arabische Nummerierung ab Seite 1)
+#set par(leading: 1.25em, justify: true)
+#set page(numbering: "1")
+#counter(page).update(1)
+```
+
+```{r setup, include=FALSE}
+if (!requireNamespace("formatR", quietly = TRUE)) {
+  install.packages("formatR")
+}
+library(formatR)
+
+knitr::opts_chunk$set(echo = TRUE, tidy = TRUE, tidy.opts = list(width.cutoff=40))
+
+options(digits = 2) # setzt Anzahl Dezimalstellen auf "2"
+options(OutDec = ",") # Dezimaltrennzeichen auf "," festlegen
+```
+
+<!--# Hier beginnt der Hauptteil der Arbeit. -->
+
+# Relevanz der Themenstellung
+
+## Problemstellung
+
+Dies hier ist ein Blindtext zum Testen von Textausgaben. Wer diesen Text liest, ist selbst schuld. Der Text gibt lediglich den Grauwert der Schrift an. Ist das wirklich so? Ist es gleichgültig, ob ich schreibe: „Dies ist ein Blindtext“ oder „Huardest gefburn“? Kjift – mitnichten! Ein Blindtext bietet mir wichtige Informationen. An ihm messe ich die Lesbarkeit einer Schrift, ihre Anmutung, wie harmonisch die Figuren zueinander stehen und prüfe, wie breit oder schmal sie läuft. Ein Blindtext sollte möglichst viele verschiedene Buchstaben enthalten und in der Originalsprache gesetzt sein. Er muss keinen Sinn ergeben, sollte aber lesbar sein. Fremdsprachige Texte wie „Lorem ipsum“ dienen nicht dem eigentlichen Zweck, da sie eine falsche Anmutung vermitteln. Das hier ist der zweite Absatz. Dies hier ist ein Blindtext zum Testen von Textausgaben. Wer diesen Text liest, ist selbst schuld.[@bourier2024]
+
+![Das ist das Logo der DHGE](dhge_logo.png){width="229"}
+
+Der Text gibt lediglich den Grauwert der Schrift an. Ist das wirklich so? Ist es gleichgültig, ob ich schreibe: „Dies ist ein Blindtext“ oder „Huardest gefburn“? Kjift – mitnichten! Ein Blindtext bietet mir wichtige Informationen. An ihm messe ich die Lesbarkeit einer Schrift, ihre Anmutung, wie harmonisch die Figuren zueinander stehen und prüfe, wie breit oder schmal sie läuft. Ein Blindtext sollte möglichst viele verschiedene Buchstaben enthalten und in der Originalsprache gesetzt sein. Er muss keinen Sinn ergeben, sollte aber lesbar sein. Fremdsprachige Texte wie „Lorem ipsum“ dienen nicht dem eigentlichen Zweck, da sie eine falsche Anmutung vermitteln. Und nun folgt – ob man es glaubt oder nicht – der dritte Absatz. Dies hier ist ein Blindtext zum Testen von Textausgaben. Wer diesen Text liest, ist selbst schuld. Der Text gibt lediglich den Grauwert der Schrift an. Ist das wirklich so? Ist es gleichgültig, ob ich schreibe: „Dies ist ein Blindtext“ oder „Huardest gefburn“? Kjift – mitnichten! Ein Blindtext bietet mir wichtige Informationen. An ihm messe ich die Lesbarkeit einer Schrift, ihre Anmutung, wie harmonisch die Figuren zueinander stehen und prüfe, wie breit oder schmal sie läuft. Ein Blindtext sollte möglichst viele verschiedene Buchstaben enthalten und in der Originalsprache gesetzt sein. Er muss keinen Sinn ergeben, sollte aber lesbar sein. Fremdsprachige Texte wie „Lorem ipsum“ dienen nicht dem eigentlichen Zweck, da sie eine falsche Anmutung vermitteln.
+
+## Arithmetisches Mittel
+
+Das arithmetische Mittel, welches umgangssprachlich häufig als Mittelwert bezeichnet wird, berechnet den durchschnittlichen Wert eines metrischen Merkmals. Die Berechnung erfolgt gemäß der folgenden Formel, die angelehnt an @bourier2025, S. 78 entnommen wurde:
+
+$$
+\bar{x}=\dfrac{1}{n} \cdot \sum_{i=1}^n x_i \cdot h_i
+$$
+
+Dabei steht $x_i$ für die Merkmalsausprägung $i$ und $h_i$ für die absolute Häufigkeit dieser Merkmalsausprägung, $n$ steht für die Anzahl aller Beobachtungswerte. Die o. g. Quelle kann auch als Fußnote angegeben werden.[^1]
+
+[^1]: Vgl. @bourier2025, S. 78.
+
+## Vorteil der Verwendung von R Markdown
+
+Der Vorteil, eine (wissenschaftliche) Ausarbeitung oder einen Bericht mit R Markdown zu schreiben, besteht darin, dass erforderliche Berechnungen direkt in diesem Dokument vorgenommen werden können.
+
+Betrachten wir dazu das folgende Beispiel:
+
+Wir haben die folgenden Verkaufszahlen für die vergangenen zwölf Monate vorliegen:
+
+|     Monat      |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  | 11  | 12  |
+|:--------------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Verkaufszahlen | 100 | 120 | 200 | 170 | 50  | 85  | 20  | 110 | 130 | 170 | 200 | 320 |
+
+: Verkaufszahlen der vergangenen 12 Monate {#tbl-Verkaufszahlen}
+
+Wir interessieren uns nun für die durchschnittlichen Verkaufszahlen (arithm. Mittel) und die Streuung der Daten (Standardabweichung). Diese Werte könnten wir nun außerhalb dieses Dokumentes berechnen, was allerdings zu Übertragungsfehlern führen könnte. Stattdessen können wir diese Berechnungen direkt innerhalb dieses Dokumentes vornehmen und in den Fließtext integrieren. Wenn sich unsere Datengrundlage ändert, könnten wir den Bericht erneut erstellen und hätten automatisch aktualisierte Werte.
+
+Wir verwenden für diese Analyse den folgenden R-Code:
+
+```{r Datensatz}
+
+datensatz <- c(100,120,200,170,50,85,20,110,130,170,200,320) 
+# Das sind unsere Daten, diese werden üblicherweise als externe Datei geladen.
+
+mw_verkaufszahlen <- mean(datensatz) 
+# Berechnet den Mittelwert und speichert den Wert in der Variable "mw_verkaufszahlen" ab.
+
+sd_verkaufszahlen <- sd(datensatz) 
+# Berechnet die Standardabweichung und speichert den Wert in der Variable "sd_verkaufszahlen" ab.
+```
+
+Wir können jetzt im Fließtext direkt auf die Ergebnisse zugreifen. Wir können also unsere Leser informieren, dass unsere durchschnittlichen Verkaufszahlen bei `r mw_verkaufszahlen` bei einer Standardabweichung von `r sd_verkaufszahlen` lagen.[^2] 
+
+[^2]: Hinweis: Der R-Code, der hier zu Illustrationszwecken angezeigt wird, kann in einem finalen Dokument einfach unterdrückt werden, sodass nur die Ergebnisse angezeigt werden.
+
+Besonders schön ist auch, dass wir direkt grafische Darstellungen erzeugen können, die auf unseren Ergebnissen basieren. Wollen wir die Umsatzdarstellung visualisieren, so können wir den folgenden Code benutzen:
+
+```{r Grafik, fig.cap = "Umsatzentwicklung"}
+library(ggplot2)
+datensatz_grafik <- data.frame(Monate = c(1:12), Verkaufszahlen = c(100,120,200,170,50,85,20,110,130,170,200,320)) 
+
+ggplot(datensatz_grafik, aes(x=Monate, y=Verkaufszahlen)) + geom_line() + ggtitle("Umsatzentwicklung") + scale_x_continuous(breaks=c(1:12))
+
+```
+
+<!--# Hier hört der Hauptteil der Arbeit auf. Danach kommt das Literaturverzeichnis. -->
+
+```{=typst}
+#pagebreak()
+#set par(justify: false)
+
+#show bibliography: set heading(outlined: false)
+#set bibliography(title: none)
+
+#set page(numbering: "I")
+
+#context {
+  let m = query(<rom_stand>)
+  if m.len() > 0 {
+    let last_val = m.first().value
+    // Diese Regeln gelten ab dem nächsten physischen Seitenumbruch
+    set page(numbering: "I")
+    counter(page).update(last_val + 1)
+  }
+
+
+heading(level: 1, numbering: none)[Literaturverzeichnis]
+}
+```
+::: {#refs}
+:::
